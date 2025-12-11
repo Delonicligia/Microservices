@@ -1,8 +1,8 @@
 package com.delonic.order_service.vo;
-import com.delonic.order_service.model.Order;
+import com.delonic.order_service.model.orderQuery;
 
 public class ResponseTemplate {
-    private Order order;
+    private orderQuery order;
     private produk produk;
     private pelanggan pelanggan;
 
@@ -11,18 +11,18 @@ public class ResponseTemplate {
     }
 
     // Constructor dengan isi
-    public ResponseTemplate(Order order, produk produk, pelanggan pelanggan) {
+    public ResponseTemplate(orderQuery order, produk produk, pelanggan pelanggan) {
         this.order = order;
         this.produk = produk;
         this.pelanggan = pelanggan;
     }
 
     // Getter dan Setter
-    public Order getOrder() {
+    public orderQuery getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(orderQuery order) {
         this.order = order;
     }
 
