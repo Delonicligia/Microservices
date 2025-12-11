@@ -32,12 +32,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- MySQL Driver (WRITE DB / COMMAND) -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
 
         <!-- H2 Database (READ DB / QUERY) -->
         <dependency>
@@ -64,6 +59,13 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- logstash depedency -->
+		<dependency>
+    		<groupId>net.logstash.logback</groupId>
+    		<artifactId>logstash-logback-encoder</artifactId>
+    		<version>7.4</version>
+		</dependency>
 
         <!-- Testing -->
         <dependency>
