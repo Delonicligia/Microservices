@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pelanggan-service
+  labels:
+    app: pelanggan-service
+spec:
+  containers:
+    - name: pelanggan-service
+      image: pelanggan-service:1.0
+      ports:
+        - containerPort: 8082
+      env:
+        - name: SERVER_PORT
+          value: "8082"
+        - name: SPRING_APPLICATION_NAME
+          value: "PELANGGAN-SERVICE"
+
+        # Database Config
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:h2:file:/app/data/pelanggan;DB_CLOSE_DELAY=-1"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "sa"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "password"
+
+        # JPA
+        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+          value: "create-drop"
+
+        # Eureka
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: "http://localhost:8761/eureka/"
+
+        - name: EUREKA_CLIENT_REGISTER_WITH_EUREKA
+          value: "true"
+        - name: EUREKA_CLIENT_FETCH_REGISTRY
+          value: "true"
+
+        # Actuator
+        - name: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+          value: "*"
+        - name: MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS
+          value: "always"
+
+      volumeMounts:
+        - name: h2-data
+          mountPath: /app/data
+
+  volumes:
+    - name: h2-data
+      emptyDir: {}
