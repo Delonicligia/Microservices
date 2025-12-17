@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "BUKU-SERVICE"  // Ganti sesuai nama service
-        DOCKER_REGISTRY = ""         // Kosongkan jika local only
+        IMAGE_NAME = "buku-service"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                echo "📥 Checking out code from branch: ${env.BRANCH_NAME}"
+                echo "📥 Checkout branch: ${env.BRANCH_NAME}"
                 checkout scm
             }
         }
@@ -17,26 +16,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    echo "🔨 Building Docker image..."
-                    def imageName = "${IMAGE_NAME}:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+                    def imageTag = "${IMAGE_NAME}:${env.BUILD_NUMBER}"
 
                     sh """
-                        docker build -t ${imageName} .
-                        docker tag ${imageName} ${IMAGE_NAME}:latest
+                        docker build -t ${imageTag} .
+                        docker tag ${imageTag} ${IMAGE_NAME}:latest
                     """
 
-                    echo "✅ Image built: ${imageName}"
-                }
-            }
-        }
-
-        stage('Cleanup Old Images') {
-            steps {
-                script {
-                    echo "🧹 Cleaning up old images..."
-                    sh """
-                        docker image prune -f
-                    """
+                    echo "✅ Docker image built: ${imageTag}"
                 }
             }
         }
