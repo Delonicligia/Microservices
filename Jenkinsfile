@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "ANGGOTA-SERVICE"  // Ganti sesuai nama service
+        IMAGE_NAME = "anggota-service"  // Ganti sesuai nama service
         DOCKER_REGISTRY = ""         // Kosongkan jika local only
     }
 
