@@ -1,12 +1,32 @@
-FROM openjdk:17.0.1-jdk-oracle
-# direktori
+# ========================
+# Stage 1: Build JAR
+# ========================
+FROM maven:3.9.6-eclipse-temurin-17-alpine AS builder
+
 WORKDIR /app
 
-# copy jar file
-COPY target/*.jar app.jar
+# Copy dependency files dulu (untuk caching layer)
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
 
-# expose
+# Baru copy source code
+COPY src ./src
+
+# Build tanpa run tests (lebih cepat)
+RUN mvn clean package -DskipTests
+
+# ========================
+# Stage 2: Runtime Image
+# ========================
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+# Copy JAR dari stage builder
+COPY --from=builder /app/target/*.jar app.jar
+
+# Expose port (sesuaikan dengan application.properties)
 EXPOSE 8081
 
-# run
-CMD ["java", "-jar", "app.jar"]
+# Jalankan aplikasi
+ENTRYPOINT ["java", "-jar", "app.jar"]
