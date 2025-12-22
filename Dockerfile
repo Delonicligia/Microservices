@@ -7,7 +7,6 @@ WORKDIR /app
 
 # Copy dependency files dulu (untuk caching layer)
 COPY pom.xml .
-RUN mvn dependency:go-offline -B
 
 # Baru copy source code
 COPY src ./src
