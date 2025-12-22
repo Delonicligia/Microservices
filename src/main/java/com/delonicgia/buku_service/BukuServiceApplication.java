@@ -1,4 +1,4 @@
-package com.delonic.buku_service;
+package com.delonicgia.buku_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

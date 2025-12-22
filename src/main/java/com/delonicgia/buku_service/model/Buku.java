@@ -1,4 +1,4 @@
-package com.delonic.buku_service.model;
+package com.delonicgia.buku_service.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.delonic.buku_service.config;
+package com.delonicgia.buku_service.config;
 
 
 import org.springframework.beans.factory.annotation.Qualifier;

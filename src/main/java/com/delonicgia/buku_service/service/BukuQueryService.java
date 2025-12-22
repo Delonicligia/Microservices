@@ -1,9 +1,10 @@
 // service/BukuQueryService.java
-package com.delonic.buku_service.service;
+package com.delonicgia.buku_service.service;
 
-import com.delonic.buku_service.model.Buku;
-import com.delonic.buku_service.repository.read.BukuReadRepository;
 import org.springframework.stereotype.Service;
+
+import com.delonicgia.buku_service.model.Buku;
+import com.delonicgia.buku_service.repository.read.BukuReadRepository;
 
 import java.util.List;
 

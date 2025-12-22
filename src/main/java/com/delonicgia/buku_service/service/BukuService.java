@@ -1,10 +1,11 @@
-package com.delonic.buku_service.service;
+package com.delonicgia.buku_service.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.delonic.buku_service.model.Buku;
-import com.delonic.buku_service.repository.BukuRepository;
+
+import com.delonicgia.buku_service.model.Buku;
+import com.delonicgia.buku_service.repository.BukuRepository;
 
 @Service
 public class BukuService {

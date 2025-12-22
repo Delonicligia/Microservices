@@ -1,13 +1,13 @@
-package com.delonic.buku_service.controller;
+package com.delonicgia.buku_service.controller;
 
 
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.delonic.buku_service.model.Buku;
-import com.delonic.buku_service.service.BukuCommandService;
-import com.delonic.buku_service.service.BukuQueryService;
+import com.delonicgia.buku_service.model.Buku;
+import com.delonicgia.buku_service.service.BukuCommandService;
+import com.delonicgia.buku_service.service.BukuQueryService;
 
 @RestController
 @RequestMapping("/api/buku")
