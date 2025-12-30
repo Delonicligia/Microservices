@@ -27,6 +27,27 @@ pipeline {
                 }
             }
         }
+        
+        stage('Deploy to Local Prod') {
+            steps {
+                script {
+                    echo "Mendeploy ke port ${HOST_PORT}..."
+                    
+                    // 1. Hapus container lama jika ada (biar update)
+                    // "|| true" agar tidak error jika container belum ada
+                    sh "docker rm -f ${CONTAINER_NAME} || true"
+                    
+                    // 2. Jalankan container baru
+                    sh """
+                        docker run -d \
+                        --name ${CONTAINER_NAME} \
+                        --restart unless-stopped \
+                        -p ${HOST_PORT}:${CONTAINER_PORT} \
+                        pengembalian-service:${env.BRANCH_NAME}
+                    """
+                }
+            }
+        }
     }
 
     post {
@@ -37,4 +58,5 @@ pipeline {
             echo "❌ Build FAILED for ${env.BRANCH_NAME}"
         }
     }
+
 }
