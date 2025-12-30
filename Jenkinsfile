@@ -3,7 +3,9 @@ pipeline {
 
     environment {
         IMAGE_NAME = "anggota-service"  // Ganti sesuai nama service
-        DOCKER_REGISTRY = ""         // Kosongkan jika local only
+        CONTAINER_NAME = "anggota-service-deploy"
+        CONTAINER_PORT = "8081"
+        HOST_PORT = "5081"
     }
 
     stages {
@@ -26,6 +28,27 @@ pipeline {
                     """
 
                     echo "✅ Image built: ${imageName}"
+                }
+            }
+        }
+
+        stage('Deploy to Local Prod') {
+            steps {
+                script {
+                    echo "Mendeploy ke port ${HOST_PORT}..."
+                    
+                    // 1. Hapus container lama jika ada (biar update)
+                    // "|| true" agar tidak error jika container belum ada
+                    sh "docker rm -f ${CONTAINER_NAME} || true"
+                    
+                    // 2. Jalankan container baru
+                    sh """
+                        docker run -d \
+                        --name ${CONTAINER_NAME} \
+                        --restart unless-stopped \
+                        -p ${HOST_PORT}:${CONTAINER_PORT} \
+                        ${IMAGE_NAME}:latest
+                    """
                 }
             }
         }
