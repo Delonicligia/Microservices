@@ -3,6 +3,9 @@ pipeline {
 
     environment {
         IMAGE_NAME = "buku-service"
+        CONTAINER_NAME = "buku-service-deploy"
+        CONTAINER_PORT = "8084"
+        HOST_PORT = "5084"
     }
 
     stages {
@@ -43,7 +46,7 @@ pipeline {
                         --name ${CONTAINER_NAME} \
                         --restart unless-stopped \
                         -p ${HOST_PORT}:${CONTAINER_PORT} \
-                        pengembalian-service:${env.BRANCH_NAME}
+                        ${IMAGE_NAME}:latest
                     """
                 }
             }
