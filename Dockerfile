@@ -20,13 +20,16 @@ RUN mvn clean package -DskipTests
 # ========================
 FROM eclipse-temurin:17-jre-alpine
 
+# Install curl for healthcheck
+RUN apk add --no-cache curl
+
 WORKDIR /app
 
 # Copy JAR dari stage builder
 COPY --from=builder /app/target/*.jar app.jar
 
 # Expose port (sesuaikan dengan application.properties)
-EXPOSE 8081
+EXPOSE 8084
 
 # Jalankan aplikasi
 ENTRYPOINT ["java", "-jar", "app.jar"]
