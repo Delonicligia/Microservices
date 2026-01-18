@@ -1,13 +1,22 @@
 spring:
   application:
     name: eureka-server
+  profiles:
+    active: localhost
+    # active: docker
+
 server:
   port: 8761
+
 eureka:
+  instance:
+    hostname: eureka-server
   client:
     register-with-eureka: false
     fetch-registry: false
-logging:
-  level:
-    com.netflix.eureka: OFF
-    com.netflix.discovery: OFF
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
