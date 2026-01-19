@@ -29,7 +29,7 @@ public class AnggotaController {
     // GET anggota by ID
     @GetMapping("/{id}")
     public ResponseEntity<Anggota> getAnggotaById(@PathVariable Long id) {
-        log.info("Berhasil mendapatkan anggota berdasarkan id");
+        log.info("Berhasil mendapatkan anggota berdasarkan id", getAnggotaById(id));
         Anggota anggota = anggotaService.getAnggotaById(id);
         return anggota != null ? ResponseEntity.ok(anggota) : ResponseEntity.notFound().build();
     }

@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "anggota-service"  // Ganti sesuai nama service
+        IMAGE_NAME = "anggota-service"
         CONTAINER_NAME = "anggota-service-deploy"
         CONTAINER_PORT = "8081"
         HOST_PORT = "5081"
