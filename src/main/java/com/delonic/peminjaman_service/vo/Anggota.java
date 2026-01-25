@@ -2,20 +2,20 @@ package com.delonic.peminjaman_service.vo;
 
 public class Anggota {
     private Long id;
-    private String tanggal_pinjam;
-    private String tanggal_kembali;
-    private Long anggotaId;
-    private Long bukuId;
+    private String nama;
+    private String email;
+    private String alamat;
+    private String telepon;
 
     public Anggota() {
     }
 
-    public Anggota(Long id, String tanggal_pinjam, String tanggal_kembali, Long anggotaId, Long bukuId) {
+    public Anggota(Long id, String nama, String email, String alamat, String telepon) {
         this.id = id;
-        this.tanggal_pinjam = tanggal_pinjam;
-        this.tanggal_kembali = tanggal_kembali;
-        this.anggotaId = anggotaId;
-        this.bukuId = bukuId;
+        this.nama = nama;
+        this.email = email;
+        this.alamat = alamat;
+        this.telepon = telepon;
     }
 
     public Long getId() {
@@ -26,35 +26,35 @@ public class Anggota {
         this.id = id;
     }
 
-    public String getTanggal_pinjam() {
-        return tanggal_pinjam;
+    public String getNama() {
+        return nama;
     }
 
-    public void setTanggal_pinjam(String tanggal_pinjam) {
-        this.tanggal_pinjam = tanggal_pinjam;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
-    public String getTanggal_kembali() {
-        return tanggal_kembali;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTanggal_kembali(String tanggal_kembali) {
-        this.tanggal_kembali = tanggal_kembali;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Long getAnggotaId() {
-        return anggotaId;
+    public String getAlamat() {
+        return alamat;
     }
 
-    public void setAnggotaId(Long anggotaId) {
-        this.anggotaId = anggotaId;
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 
-    public Long getBukuId() {
-        return bukuId;
+    public String getTelepon() {
+        return telepon;
     }
 
-    public void setBukuId(Long bukuId) {
-        this.bukuId = bukuId;
+    public void setTelepon(String telepon) {
+        this.telepon = telepon;
     }
 }

@@ -1,18 +1,18 @@
 package com.delonic.peminjaman_service.vo;
 
-import com.delonic.peminjaman_service.model.Peminjaman;
+import com.delonic.peminjaman_service.model.PeminjamanQuery;
 
 public class ResponseTemplate {
     private Anggota anggota;
     private Buku buku;
-    private Peminjaman peminjaman;
+    private PeminjamanQuery peminjaman;
 
     // Constructor kosong
     public ResponseTemplate() {
     }
 
     // Constructor dengan isi
-    public ResponseTemplate(Anggota anggota, Buku buku, Peminjaman peminjaman) {
+    public ResponseTemplate(Anggota anggota, Buku buku, PeminjamanQuery peminjaman) {
         this.anggota = anggota;
         this.buku = buku;
         this.peminjaman = peminjaman;
@@ -35,11 +35,11 @@ public class ResponseTemplate {
         this.buku = buku;
     }
 
-    public Peminjaman getPeminjaman() {
+    public PeminjamanQuery getPeminjaman() {
         return peminjaman;
     }
 
-    public void setPeminjaman(Peminjaman peminjaman) {
+    public void setPeminjaman(PeminjamanQuery peminjaman) {
         this.peminjaman = peminjaman;
     }
 }
