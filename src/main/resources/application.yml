@@ -3,19 +3,27 @@ spring:
     name: ANGGOTA-SERVICE
 
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password: password
+    url: jdbc:mysql://localhost:3306/anggota_db
+    username: root
+    password: ""
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
-  h2:
-    console:
-      enabled: true
+  # ================= KAFKA CONFIG =================
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      # Group ID digunakan oleh KafkaListener
+      group-id: anggota-service-group
+      auto-offset-reset: earliest
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
-    database-platform: org.hibernate.dialect.H2Dialect
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
 
 server:
   port: 8081
